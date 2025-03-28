@@ -11,7 +11,7 @@ class Node{
     //Constructor
     Node(int value){
       this->value = value;
-      next = nullptr; //???????
+      next = nullptr; //next is a pointer to the next node
     };
 };
 
@@ -30,8 +30,8 @@ class LinkedList{
     void printList(){
       Node* temp = head;
       while(temp){
-        cout << temp->value << endl; //????????
-        temp = temp->next; //????????
+        cout << temp->value << endl; //it must sees value in class Node
+        temp = temp->next; //it must see next in class Node otherwise = inaccessible 
       }
     }
     void getHead(){
