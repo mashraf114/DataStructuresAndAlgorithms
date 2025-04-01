@@ -56,6 +56,20 @@ class LinkedList{
     length ++; //increment the length of the linked list
     }
 
+    void prepend(int value){
+      Node* newNode = new Node(value);
+      if(length == 0){
+        head = newNode;
+        tail = newNode;
+      } else {
+        newNode->next = head; //new node is now the first node
+        head = newNode; //head is now the new node
+      }
+      length ++; //increment the length of the linked list
+    }
+
+
+
     // ~LinkedList(){ //to delete the nodes, the default only deletes the head, tail and length
     //   Node* temp = head;
     //   while(head){
@@ -133,11 +147,11 @@ class LinkedList{
 
 int main(){
 
-  LinkedList* mylinkedlist = new LinkedList(1);
-  mylinkedlist->append(2);
-  
- 
-  mylinkedlist->printList();
+  LinkedList* mylinkedlist = new LinkedList(2);
+  mylinkedlist->append(3);
+ mylinkedlist->prepend(1);
+ mylinkedlist->printList();
+
   cout << "Deleting the last node" << endl;
   mylinkedlist->deleteLast();
   mylinkedlist->getHead();
