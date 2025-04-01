@@ -97,33 +97,33 @@ class LinkedList{
           cout << "There is no node to delete" << endl;
           return;
       }
-  
+
+      Node* temp = head;
+
       if (length == 1) {  // If only one node exists
+          cout << "There is only 1 node to delete" << endl;
           delete head;  // Free the only node
           head = nullptr;
           tail = nullptr;
           length = 0;
           return;
+      } else{
+        Node* pre = head;
+  
+        while (temp->next) {  // Traverse until the last node
+            pre = temp;
+            temp = temp->next;
+        }
+    
+        pre->next = nullptr;  // Disconnect last node
+        tail = pre;           // Update tail
       }
   
-      Node* temp = head;
-      Node* pre = head;
-  
-      while (temp->next) {  // Traverse until the last node
-          pre = temp;
-          temp = temp->next;
-      }
-  
-      pre->next = nullptr;  // Disconnect last node
-      tail = pre;           // Update tail
+     
       delete temp;          // Delete last node
       length--;
   
-      // Extra safety check (not strictly needed but defensive)
-      if (length == 0) {
-          head = nullptr;
-          tail = nullptr;
-      }
+    
   }
 
   
@@ -131,57 +131,51 @@ class LinkedList{
 
 
 
-// int main(){
+int main(){
 
-// LinkedList* mylinkedlist = new LinkedList(1);
-//   mylinkedlist->append(2);
+  LinkedList* mylinkedlist = new LinkedList(1);
+  mylinkedlist->append(2);
   
  
-//   mylinkedlist->printList();
-//   cout << "Deleting the last node" << endl;
-//   mylinkedlist->deleteLast();
-//   mylinkedlist->getHead();
-//   mylinkedlist->getTail();
-//   mylinkedlist->getLength();
-//   cout << "Printing the linked list" << endl;
-//   //Print the linked list
-//   mylinkedlist->printList();
-//   cout << "Deleting the last node" << endl;
-//   mylinkedlist->deleteLast();
-//   mylinkedlist->getHead();
-//   mylinkedlist->getTail();
-//   mylinkedlist->getLength();
-//   cout << "Printing the linked list" << endl;
-//   //Print the linked list
-//   mylinkedlist->printList();
-//   cout << "Deleting the last node" << endl;
-//   mylinkedlist->deleteLast();
-//   mylinkedlist->getHead();
-//   mylinkedlist->getTail();
-//   mylinkedlist->getLength();
-//   cout << "Printing the linked list" << endl;
+  mylinkedlist->printList();
+  cout << "Deleting the last node" << endl;
+  mylinkedlist->deleteLast();
+  mylinkedlist->getHead();
+  mylinkedlist->getTail();
+  mylinkedlist->getLength();
+  cout << "Printing the linked list" << endl;
+  //Print the linked list
+  mylinkedlist->printList();
+  cout << "Deleting the last node" << endl;
+  mylinkedlist->deleteLast();
+  cout << "Printing the linked list" << endl;
+  //Print the linked list
+  mylinkedlist->printList();
+  cout << "Deleting the last node" << endl;
+  mylinkedlist->deleteLast();
+  cout << "Printing the linked list" << endl;
 
-// };
+};
 
 
 
-int main() {
-  LinkedList mylinkedlist(10);
-  mylinkedlist.append(20);
-  mylinkedlist.append(30);
+// int main() {
+//   LinkedList mylinkedlist(10);
+//   mylinkedlist.append(20);
+//   mylinkedlist.append(30);
 
-  mylinkedlist.printList();  // Expected Output: 10 20 30
+//   mylinkedlist.printList();  // Expected Output: 10 20 30
 
-  mylinkedlist.deleteLast();
-  mylinkedlist.printList();  // Expected Output: 10 20
+//   mylinkedlist.deleteLast();
+//   mylinkedlist.printList();  // Expected Output: 10 20
 
-  mylinkedlist.deleteLast();
-  mylinkedlist.printList();  // Expected Output: 10
+//   mylinkedlist.deleteLast();
+//   mylinkedlist.printList();  // Expected Output: 10
 
-  mylinkedlist.deleteLast();
-  mylinkedlist.printList();  // Expected Output: (empty list)
+//   mylinkedlist.deleteLast();
+//   mylinkedlist.printList();  // Expected Output: (empty list)
 
-  mylinkedlist.deleteLast(); // Expected Output: "There is no node to delete"
+//   mylinkedlist.deleteLast(); // Expected Output: "There is no node to delete"
 
-  return 0;
-}
+//   return 0;
+// }
