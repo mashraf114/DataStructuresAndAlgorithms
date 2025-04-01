@@ -43,17 +43,19 @@ class LinkedList{
     void getLength(){
       cout << length << endl;
     }
-    void append(int value){
+
+    void append(int value){ //to add a new node at the end of the linked list
       Node* newNode = new Node(value);
-      if(length == 0){
+      if(length ==0){
         head = newNode;
         tail = newNode;
       }else{
-        tail->next = newNode;
-        tail = newNode;
-      }
-      length++;
+        tail->next = newNode; //tail is the last node, so we add the new node to the end of the list
+        tail = newNode; //tail is now the new node
+      } 
+    length ++; //increment the length of the linked list
     }
+
     ~LinkedList(){ //to delete the nodes, the default only deletes the head, tail and length
       Node* temp = head;
       while(head){
@@ -68,18 +70,15 @@ class LinkedList{
 
 int main(){
 
-LinkedList* mylinkedlist = new LinkedList(10);
-  mylinkedlist->append(20);
-  // mylinkedlist->append(30);
-  // mylinkedlist->append(40);
-  // mylinkedlist->append(50);
+LinkedList* mylinkedlist = new LinkedList(1);
+  mylinkedlist->append(2);
+  
   mylinkedlist->getHead();
   mylinkedlist->getTail();
   mylinkedlist->getLength();
   cout << "Printing the linked list" << endl;
   //Print the linked list
-mylinkedlist->printList();
-  return 0;
+  mylinkedlist->printList();
 
 };
 
