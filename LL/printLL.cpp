@@ -54,7 +54,16 @@ class LinkedList{
       }
       length++;
     }
+    ~LinkedList(){ //to delete the nodes, the default only deletes the head, tail and length
+      Node* temp = head;
+      while(head){
+        head = head ->next;
+        delete temp;
+        temp = head;
+      }
+    }
 };
+
 
 
 int main(){
@@ -72,7 +81,5 @@ LinkedList* mylinkedlist = new LinkedList(10);
 mylinkedlist->printList();
   return 0;
 
-
-
-
 };
+
