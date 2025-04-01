@@ -136,11 +136,25 @@ class LinkedList{
      
       delete temp;          // Delete last node
       length--;
-  
-    
   }
 
-  
+  void deleteFirt(){
+    if(length == 0){
+      cout << "There is no node to delete" << endl;
+      return;
+    }
+    Node* temp = head;
+
+    if(length == 1){
+      cout << "There is only 1 node to delete" << endl;
+      head = nullptr;
+      tail = nullptr;
+    } else {
+      head = head ->next; // Move head to the next node
+  } 
+    delete temp; // Delete the old head node
+    length --; // Decrement the length of the linked list
+  }
 };
 
 
@@ -152,8 +166,10 @@ int main(){
  mylinkedlist->prepend(1);
  mylinkedlist->printList();
 
-  cout << "Deleting the last node" << endl;
-  mylinkedlist->deleteLast();
+  cout << "Deleting the First node" << endl;
+  mylinkedlist->deleteFirt();
+  mylinkedlist->printList();
+
   mylinkedlist->getHead();
   mylinkedlist->getTail();
   mylinkedlist->getLength();
