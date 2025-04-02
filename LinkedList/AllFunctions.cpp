@@ -165,12 +165,41 @@ class LinkedList{
     }
     return temp;
   }
+
   bool set(int index , int value){
     if (index=0||index>=length){
       return false;
     }
     Node* temp = get(index);
     temp->value = value;
+    return true;
+  }
+
+  bool insert(int index , int value){
+    cout << "Inserting at index " << index << endl;
+    cout << "Inserting value " << value << endl;
+    if(index==0||index>length){ //1 = assignment, == comparison
+      cout << "Index out of bounds" << endl;
+      return false;
+
+    }
+    if(index == 0){
+      cout << "prepend" << endl;
+      prepend(value);
+      return true;
+    }
+    if(index == length){
+      cout << "append" << endl;
+      append(value);
+      return true;
+    }   
+    
+    cout << "Inserting at index " << index << endl;
+    Node* newNode = new Node(value);
+    Node* temp = get(index-1);
+    newNode->next = temp->next; // Link the new node to the next node
+    temp->next = newNode; // Link the previous node to the new node
+    length ++; // Increment the length of the linked list
     return true;
   }
 
@@ -185,7 +214,8 @@ int main(){
  mylinkedlist->prepend(881);
  mylinkedlist->printList();
 cout << "The value at index 1 is: " << mylinkedlist->get(0)->value << endl;
-mylinkedlist->set(0, 100);
+// mylinkedlist->set(0, 100);
+mylinkedlist->insert(3, 55);
 mylinkedlist->printList();  
 
 // cout << "Deleting the First node" << endl;
