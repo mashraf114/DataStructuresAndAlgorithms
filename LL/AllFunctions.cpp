@@ -165,6 +165,15 @@ class LinkedList{
     }
     return temp;
   }
+  bool set(int index , int value){
+    if (index=0||index>=length){
+      return false;
+    }
+    Node* temp = get(index);
+    temp->value = value;
+    return true;
+  }
+
 };
 
 
@@ -176,24 +185,27 @@ int main(){
  mylinkedlist->prepend(881);
  mylinkedlist->printList();
 cout << "The value at index 1 is: " << mylinkedlist->get(0)->value << endl;
-  cout << "Deleting the First node" << endl;
-  mylinkedlist->deleteFirt();
-  mylinkedlist->printList();
+mylinkedlist->set(0, 100);
+mylinkedlist->printList();  
 
-  mylinkedlist->getHead();
-  mylinkedlist->getTail();
-  mylinkedlist->getLength();
-  cout << "Printing the linked list" << endl;
-  //Print the linked list
-  mylinkedlist->printList();
-  cout << "Deleting the last node" << endl;
-  mylinkedlist->deleteLast();
-  cout << "Printing the linked list" << endl;
-  //Print the linked list
-  mylinkedlist->printList();
-  cout << "Deleting the last node" << endl;
-  mylinkedlist->deleteLast();
-  cout << "Printing the linked list" << endl;
+// cout << "Deleting the First node" << endl;
+  // mylinkedlist->deleteFirt();
+  // mylinkedlist->printList();
+
+  // mylinkedlist->getHead();
+  // mylinkedlist->getTail();
+  // mylinkedlist->getLength();
+  // cout << "Printing the linked list" << endl;
+  // //Print the linked list
+  // mylinkedlist->printList();
+  // cout << "Deleting the last node" << endl;
+  // mylinkedlist->deleteLast();
+  // cout << "Printing the linked list" << endl;
+  // //Print the linked list
+  // mylinkedlist->printList();
+  // cout << "Deleting the last node" << endl;
+  // mylinkedlist->deleteLast();
+  // cout << "Printing the linked list" << endl;
 
 };
 
