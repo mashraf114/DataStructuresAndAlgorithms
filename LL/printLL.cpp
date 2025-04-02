@@ -155,6 +155,16 @@ class LinkedList{
     delete temp; // Delete the old head node
     length --; // Decrement the length of the linked list
   }
+  Node* get(int index){
+    if(index<0||index>=length){
+      return nullptr;
+    } 
+    Node* temp = head;
+    for(int i = 0 ; i<index; i++){
+      temp = temp->next;
+    }
+    return temp;
+  }
 };
 
 
@@ -163,9 +173,9 @@ int main(){
 
   LinkedList* mylinkedlist = new LinkedList(2);
   mylinkedlist->append(3);
- mylinkedlist->prepend(1);
+ mylinkedlist->prepend(881);
  mylinkedlist->printList();
-
+cout << "The value at index 1 is: " << mylinkedlist->get(0)->value << endl;
   cout << "Deleting the First node" << endl;
   mylinkedlist->deleteFirt();
   mylinkedlist->printList();
