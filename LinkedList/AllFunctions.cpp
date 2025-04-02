@@ -138,7 +138,7 @@ class LinkedList{
       length--;
   }
 
-  void deleteFirt(){
+  void deleteFirst(){
     if(length == 0){
       cout << "There is no node to delete" << endl;
       return;
@@ -176,31 +176,37 @@ class LinkedList{
   }
 
   bool insert(int index , int value){
-    cout << "Inserting at index " << index << endl;
-    cout << "Inserting value " << value << endl;
     if(index==0||index>length){ //1 = assignment, == comparison
-      cout << "Index out of bounds" << endl;
       return false;
-
     }
     if(index == 0){
-      cout << "prepend" << endl;
       prepend(value);
       return true;
     }
     if(index == length){
-      cout << "append" << endl;
       append(value);
       return true;
     }   
     
-    cout << "Inserting at index " << index << endl;
     Node* newNode = new Node(value);
     Node* temp = get(index-1);
     newNode->next = temp->next; // Link the new node to the next node
     temp->next = newNode; // Link the previous node to the new node
     length ++; // Increment the length of the linked list
     return true;
+  }
+
+  void deleteNode(int index){
+    if(index<0||index>=length){
+      return;
+    }
+    if(index == 0) return deleteFirst();
+    if(index == length-1) return deleteLast();
+    Node* prev = get(index-1);
+    Node* temp = prev->next; // To avoid using get again as get if of O(n)
+    prev->next = temp->next; // Link the previous node to the next node
+    delete temp;
+    length --;
   }
 
 };
@@ -215,11 +221,15 @@ int main(){
  mylinkedlist->printList();
 cout << "The value at index 1 is: " << mylinkedlist->get(0)->value << endl;
 // mylinkedlist->set(0, 100);
-mylinkedlist->insert(3, 55);
+// mylinkedlist->insert(3, 55);
+mylinkedlist->deleteNode(1);
 mylinkedlist->printList();  
+mylinkedlist->deleteNode(0);
+cout << "Printing the linked list" << endl;
+mylinkedlist->printList();
 
 // cout << "Deleting the First node" << endl;
-  // mylinkedlist->deleteFirt();
+  // mylinkedlist->deleteFirst();
   // mylinkedlist->printList();
 
   // mylinkedlist->getHead();
