@@ -209,6 +209,20 @@ class LinkedList{
     length --;
   }
 
+  void reverse(){
+     Node* temp = head;
+     head = tail;
+     tail = temp;
+     Node* after = temp->next;
+     Node* before = nullptr;
+      for(int i = 0; i<length; i++){
+        after = temp->next;
+        temp->next = before;
+        before = temp;
+        temp = after;
+      }
+  }
+
 };
 
 
@@ -222,10 +236,11 @@ int main(){
 cout << "The value at index 1 is: " << mylinkedlist->get(0)->value << endl;
 // mylinkedlist->set(0, 100);
 // mylinkedlist->insert(3, 55);
-mylinkedlist->deleteNode(1);
+// mylinkedlist->deleteNode(1);
 mylinkedlist->printList();  
-mylinkedlist->deleteNode(0);
-cout << "Printing the linked list" << endl;
+mylinkedlist->reverse();
+// mylinkedlist->deleteNode(0);
+// cout << "Printing the linked list" << endl;
 mylinkedlist->printList();
 
 // cout << "Deleting the First node" << endl;
